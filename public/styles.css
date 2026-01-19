@@ -1,0 +1,472 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== PAGE 1: STUDENT LIST ===== */
+.page-student-list {
+    animation: slideIn 0.3s ease-in;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.list-header h1 {
+    color: white;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.student-count {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.count-badge {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 8px;
+}
+
+.btn-new-registration {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: 2px solid white;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-new-registration:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.students-table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.students-table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.students-table th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+.students-table td {
+    padding: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.students-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.students-table tbody tr:hover {
+    background: #f8f9ff;
+    box-shadow: inset 0 0 10px rgba(102, 126, 234, 0.1);
+}
+
+.student-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.btn-view-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-view-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: white;
+}
+
+.empty-state h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+/* ===== PAGE 2: REGISTRATION FORM ===== */
+.page-registration {
+    animation: slideIn 0.3s ease-in;
+}
+
+.form-container {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h1 {
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #ff6b6b;
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.photo-upload-container {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9ff;
+    border-radius: 8px;
+}
+
+.photo-upload-label {
+    display: block;
+    margin-bottom: 12px;
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.photo-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.photo-input-wrapper input[type="file"] {
+    display: none;
+}
+
+.photo-upload-button {
+    width: 100%;
+    padding: 50px 30px;
+    border: 3px dashed #667eea;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.photo-upload-button:hover {
+    border-color: #764ba2;
+    background: #f8f9ff;
+    transform: translateY(-2px);
+}
+
+.photo-upload-button small {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #999;
+    font-weight: 400;
+}
+
+.photo-preview-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.photo-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn-submit,
+.btn-cancel {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-cancel {
+    background: #f0f0f0;
+    color: #333;
+    border: 2px solid #e0e0e0;
+}
+
+.btn-cancel:hover {
+    background: #e0e0e0;
+}
+/* ===== PAGE 3: STUDENT CARD ===== */
+
+.page-student-card {
+  min-height: 100vh;
+  background: #f4f6fb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 20px;
+}
+
+/* CARD */
+.card-wrapper {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px 26px 24px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.15);
+}
+
+/* HEADER */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* AVATAR */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+/* BADGES */
+.badges {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.badge {
+  font-size: 14px;
+  color: #bdbdbd;
+}
+
+.badge.green {
+  color: #8bc34a;
+}
+
+
+/* TITLE */
+.card-title {
+  flex: 1;
+}
+
+.card-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.card-company {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.card-company i {
+  font-size: 14px;
+  color: #3b82f6;
+}
+
+/* INFO */
+.card-info {
+  margin-top: 18px;
+}
+
+.card-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  color: #111827;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.card-info-row i {
+  font-size: 15px;
+  color: #3b82f6;
+}
+
+.card-info-row i.fa-phone,
+.card-info-row i.fa-phone-flip {
+  position: relative;
+  top: 1px;
+}
+
+.landline-icon {
+  margin-left: 18px;
+}
+
+/* BUTTONS */
+.card-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 10px 26px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #3b82f6;
+  border: none;
+  color: #fff;
+}
+
+.secondary-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.secondary-btn:hover {
+  background: #f3f4f6;
+}

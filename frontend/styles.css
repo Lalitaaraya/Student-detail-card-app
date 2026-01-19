@@ -1,0 +1,481 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== PAGE 1: STUDENT LIST ===== */
+.page-student-list {
+    animation: slideIn 0.3s ease-in;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.list-header h1 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: 700;
+}
+
+.student-count {
+    color: #5a6c7d;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.count-badge {
+    background: #e8f0f7;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 8px;
+    color: #3498db;
+}
+
+.btn-new-registration {
+    background: #3498db;
+    color: white;
+    border: 2px solid #3498db;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-new-registration:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.2);
+}
+
+.students-table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.students-table thead {
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.students-table th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    color: #5a6c7d;
+}
+
+.students-table td {
+    padding: 16px;
+    border-bottom: 1px solid #e9ecef;
+    color: #2c3e50;
+}
+
+.students-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.students-table tbody tr:hover {
+    background: #f8f9ff;
+}
+
+.student-name {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.btn-view-card {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-view-card:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #2c3e50;
+}
+
+.empty-state h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #7f8c8d;
+}
+
+/* ===== PAGE 2: REGISTRATION FORM ===== */
+.page-registration {
+    animation: slideIn 0.3s ease-in;
+}
+
+.form-container {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.form-container h1 {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #e74c3c;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.photo-upload-container {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9ff;
+    border-radius: 8px;
+}
+
+.photo-upload-label {
+    display: block;
+    margin-bottom: 12px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.photo-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.photo-input-wrapper input[type="file"] {
+    display: none;
+}
+
+.photo-upload-button {
+    width: 100%;
+    padding: 50px 30px;
+    border: 3px dashed #3498db;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3498db;
+}
+
+.photo-upload-button:hover {
+    border-color: #2980b9;
+    background: #f8f9ff;
+    transform: translateY(-2px);
+}
+
+.photo-upload-button small {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #95a5a6;
+    font-weight: 400;
+}
+
+.photo-preview-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.photo-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #3498db;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn-submit,
+.btn-cancel {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-submit {
+    background: #3498db;
+    color: white;
+}
+
+.btn-submit:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+}
+
+.btn-cancel {
+    background: #ecf0f1;
+    color: #2c3e50;
+    border: 2px solid #bdc3c7;
+}
+
+.btn-cancel:hover {
+    background: #bdc3c7;
+}
+
+/* ===== PAGE 3: STUDENT CARD (PROFESSIONAL DESIGN) ===== */
+/* ===== PAGE 3: STUDENT CARD ===== */
+
+.page-student-card {
+  min-height: 100vh;
+  background: #f4f6fb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  padding: 20px;
+}
+
+/* Card */
+.card-wrapper {
+  background: white;
+  width: 100%;
+  max-width: 620px;
+  border-radius: 14px;
+  padding: 24px 28px;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.15);
+}
+
+/* ============================= */
+/* HORIZONTAL CARD LAYOUT */
+/* ============================= */
+
+.student-card-horizontal {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* LEFT COLUMN */
+.avatar-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* BIGGER AVATAR */
+.card-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+/* BADGES */
+.badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.badge {
+  font-size: 15px;
+}
+
+.badge.gray {
+  color: #bdbdbd;
+}
+
+.badge.green {
+  color: #7cb342;
+}
+
+/* RIGHT COLUMN */
+.info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* NAME */
+.card-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* COMPANY */
+.card-company {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #444;
+}
+
+.card-company i {
+  color: #2da8e0;
+  font-size: 16px;
+}
+
+/* INFO ROWS */
+.card-info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #111827;
+  flex-wrap: nowrap;
+}
+
+/* ICON COLOR + SIZE */
+.card-info-row i {
+  color: #2da8e0;
+  font-size: 16px;
+}
+
+/* SPACE BETWEEN PHONE & LANDLINE */
+.landline-icon {
+  margin-left: 16px;
+}
+
+/* ============================= */
+/* BUTTONS */
+/* ============================= */
+
+.card-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.primary-btn {
+  padding: 10px 26px;
+  border-radius: 8px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  font-weight: 500;
+}
+
+.secondary-btn {
+  padding: 10px 26px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+}
+
+.secondary-btn:hover {
+  background: #f3f4f6;
+}
