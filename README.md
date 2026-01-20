@@ -89,7 +89,7 @@ The application will:
 ### Registration Form
 - Fill in student details:
   - **Full Name** (required, 2-100 characters)
-  - **Company** (optional)
+  - **Company** (required)
   - **Phone 1** (required, 10+ digits)
   - **Phone 2** (optional, 10+ digits)
   - **Email** (required, valid format)
