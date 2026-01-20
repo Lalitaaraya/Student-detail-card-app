@@ -134,7 +134,7 @@ function renderRegistrationForm() {
                     </div>
 
                     <div class="form-group">
-                        <label for="company">Company</label>
+                        <label for="company">Company *</label>
                         <input type="text" id="company" name="company" placeholder="Enter company name">
                     </div>
 
@@ -145,7 +145,7 @@ function renderRegistrationForm() {
                     </div>
 
                     <div class="form-group">
-                        <label for="phone2">Phone 2</label>
+                        <label for="phone2">Phone 2 *</label>
                         <input type="tel" id="phone2" name="phone2" placeholder="Enter second phone number (optional)">
                     </div>
 
@@ -233,78 +233,109 @@ function renderRegistrationForm() {
 
 async function handleRegistrationSubmit(event) {
     event.preventDefault();
-    
-    // Clear previous errors
+
     clearFormErrors();
 
-    // Get form data
     const form = document.getElementById('registrationForm');
     const formData = new FormData(form);
 
-    // Strict Validation
     const name = formData.get('name').trim();
-    const email = formData.get('email').trim();
+    const company = formData.get('company').trim();
     const phone1 = formData.get('phone1').trim();
     const phone2 = formData.get('phone2').trim();
-    const company = formData.get('company').trim();
+    const email = formData.get('email').trim();
     const photo = formData.get('photo');
 
     let hasError = false;
 
-    // Name validation
-    if (!name || name.length < 2) {
-        showError('name', 'Name is required and must be at least 2 characters');
-        hasError = true;
-    } else if (name.length > 100) {
-        showError('name', 'Name must not exceed 100 characters');
+    // Name validation: letters only, 2-100 chars
+    // Name validation: letters & spaces only, 2–100 chars
+    if (!name) {
+     alert('Full Name is required');
+     showError('name', 'Full Name is required');
+     hasError = true;
+    } 
+    else if (/\d/.test(name)) {
+     alert('Name cannot contain numbers');
+     showError('name', 'Name must contain only letters and spaces');
+     hasError = true;
+    } 
+    else if (!/^[A-Za-z\s]+$/.test(name)) {
+     alert('Name can contain only letters and spaces');
+     showError('name', 'Invalid characters in name');
+     hasError = true;
+   } 
+    else if (name.length < 2 || name.length > 100) {
+     alert('Name must be between 2 and 100 characters');
+     showError('name', 'Name must be between 2 and 100 characters');
+     hasError = true;
+}
+
+
+    // Company validation: mandatory
+    if (!company) {
+        showError('company', 'Company is required');
+        alert('Company is required');
         hasError = true;
     }
+
+    // Phone 1 validation
+    if (!phone1) {
+        showError('phone1', 'Primary Phone is required');
+        alert('Primary phone number must be exactly 10 digits');
+        hasError = true;
+    } else if (!/^\d{10}$/.test(phone1.replace(/\D/g, ''))) {
+        showError('phone1', 'Phone must be exactly 10 digits');
+         alert('Secondary phone number must be exactly 10 digits also it should not match with primary phone number');
+        hasError = true;
+    }
+
+    // Phone 2 validation (optional)
+    if (phone2 && !/^\d{10}$/.test(phone2.replace(/\D/g, ''))) {
+        showError('phone2', 'Phone 2 must be exactly 10 digits');
+        hasError = true;
+    }
+    // Phone numbers must be different
+    if (phone1 && phone2) {
+     const cleanPhone1 = phone1.replace(/\D/g, '');
+     const cleanPhone2 = phone2.replace(/\D/g, '');
+
+    if (cleanPhone1 === cleanPhone2) {
+        alert('Primary phone number and alternate phone number must be different');
+        showError('phone2', 'Alternate phone number must be different');
+        hasError = true;
+    }
+}
+
 
     // Email validation
     if (!email) {
         showError('email', 'Email is required');
         hasError = true;
     } else if (!isValidEmail(email)) {
-        showError('email', 'Please enter a valid email address (e.g., user@example.com)');
-        hasError = true;
-    }
-
-    // Phone 1 validation
-    if (!phone1) {
-        showError('phone1', 'Primary phone number is required');
-        hasError = true;
-    } else if (!isValidPhone(phone1)) {
-        showError('phone1', 'Please enter a valid phone number (10+ digits)');
-        hasError = true;
-    }
-
-    // Phone 2 validation (if provided)
-    if (phone2 && !isValidPhone(phone2)) {
-        showError('phone2', 'Please enter a valid phone number (10+ digits)');
+        showError('email', 'Enter a valid email (e.g., user@example.com)');
         hasError = true;
     }
 
     // Photo validation
-    if (!photo) {
+    if (!photo || photo.size === 0) {
         showError('photo', 'Student photo is required');
         hasError = true;
     } else {
-        // Validate file type
         const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
         if (!validTypes.includes(photo.type)) {
             showError('photo', 'Only PNG, JPG, GIF files are allowed');
             hasError = true;
         }
-        // Validate file size (5MB max)
         if (photo.size > 5 * 1024 * 1024) {
-            showError('photo', 'Photo size must not exceed 5MB');
+            showError('photo', 'Photo must not exceed 5MB');
             hasError = true;
         }
     }
-
+    
     if (hasError) return;
 
-    // Submit
+    // Submit form
     try {
         const button = event.target.querySelector('.btn-submit');
         button.disabled = true;
@@ -329,6 +360,7 @@ async function handleRegistrationSubmit(event) {
         button.textContent = '✓ Submit';
     }
 }
+
 
 function showError(fieldName, message) {
     const errorElement = document.getElementById(`${fieldName}-error`);
@@ -429,7 +461,7 @@ app.innerHTML = `
             <span>${formatPhone(student.phone1)}</span>
 
             ${student.phone2 ? `
-              <i class="fa-solid fa-phone-flip landline-icon"></i>
+              <i class="icon">☎</i>
               <span>${formatPhone(student.phone2)}</span>
             ` : ''}
           </div>
@@ -450,7 +482,6 @@ app.innerHTML = `
     <!-- BUTTONS BELOW CARD -->
     <div class="card-actions">
       <button class="primary-btn" onclick="goToPage('studentList')">← Back</button>
-      <button class="secondary-btn" onclick="goToPage('registration')">Edit</button>
     </div>
 
   </div>
