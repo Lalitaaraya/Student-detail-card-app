@@ -235,3 +235,12 @@ npm start
 - All avatars are stored in database as BLOB (binary data)
 - Maximum file size for upload: 5MB
 - Email and phone validation ensures data quality
+
+<img width="1919" height="1034" alt="image" src="https://github.com/user-attachments/assets/e81db77f-3cff-4ca9-bdc5-a7bb604f5e11" />
+<img width="1919" height="1032" alt="image" src="https://github.com/user-attachments/assets/46ff8c48-ea31-41f8-a1e8-22995b331628" />
+<img width="1917" height="984" alt="image" src="https://github.com/user-attachments/assets/90270e60-3aa6-4131-8668-d3546cc695d6" />
+<img width="1910" height="993" alt="image" src="https://github.com/user-attachments/assets/0d4992c3-52ea-441c-a340-e383f994056c" />
+
+
+
+
