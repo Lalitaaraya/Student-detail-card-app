@@ -218,9 +218,6 @@ npm start
 - [ ] Admin dashboard
 - [ ] Authentication and authorization
 
-## License
-
-MIT License - Feel free to use for personal or commercial projects
 
 ---
 
