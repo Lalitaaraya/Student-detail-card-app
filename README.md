@@ -19,6 +19,10 @@ Student card app/
 │
 ├── package.json             # Project dependencies and scripts
 └── README.md               # This file
+└── .env
+└── database.md
+└── design.md  
+
 ```
 
 ## Features
