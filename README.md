@@ -23,7 +23,8 @@ Student card app/
 └── database.md
 └── design.md
 └── package.json
-└── packagelock.json
+└── package-lock.json
+└── Quickstart.md
 
 ```
 
