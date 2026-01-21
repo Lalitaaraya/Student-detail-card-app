@@ -21,7 +21,9 @@ Student card app/
 └── README.md               # This file
 └── .env
 └── database.md
-└── design.md  
+└── design.md
+└── package.json
+└── packagelock.json
 
 ```
 
